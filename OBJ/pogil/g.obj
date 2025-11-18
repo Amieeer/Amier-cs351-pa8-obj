@@ -1,0 +1,38 @@
+% Program G
+define Animal = class
+    field name
+    field age
+
+    method init = proc(n, a) {
+        set name = n;
+        set age = a;
+        this
+    }
+
+    method getName = proc() name
+    method getAge = proc() age
+end
+
+define Dog = class extends Animal
+    field breed
+
+    method init = proc(n, a, b) {
+        .<super>init(n, a);  % Call parent's init
+        set breed = b;
+        this
+    }
+
+    method getBreed = proc() breed
+end
+
+define myDog = .<new Dog>init("Buddy", 3, "Golden Retriever")
+
+% Can we access parent fields through methods?
+.<myDog>getName()    % "Buddy"
+.<myDog>getAge()     % 3
+.<myDog>getBreed()   % "Golden Retriever"
+
+% Can we access fields directly?
+<myDog>name    % "Buddy"
+<myDog>age     % 3
+<myDog>breed   % "Golden Retriever"

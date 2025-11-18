@@ -1,0 +1,26 @@
+% Program C
+define Point = class
+    field x
+    field y
+
+    method init = proc(xVal, yVal) {
+        set x = xVal;
+        set y = yVal;
+        this  % Why return this?
+    }
+
+    method moveTo = proc(newX, newY) {
+        set x = newX;
+        set y = newY;
+        this  % Again, why?
+    }
+
+    method getX = proc() x
+    method getY = proc() y
+end
+
+% Compare these two approaches:
+define p1 = new Point
+.<p1>init(3, 4)
+
+define p2 = .<new Point>init(5, 6)

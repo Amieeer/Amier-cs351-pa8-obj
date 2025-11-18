@@ -1,0 +1,30 @@
+% Program E
+define BankAccount = class
+    static bankName = "First National OBJ" % ASCII integer array
+    static totalAccounts = 0
+
+    field accountNumber
+    field balance
+
+    method init = proc(initialDeposit) {
+        set balance = initialDeposit;
+        set <BankAccount>totalAccounts = add1(<BankAccount>totalAccounts);
+        set accountNumber = <BankAccount>totalAccounts;
+        this
+    }
+
+    method getBalance = proc() balance
+    method getAccountNumber = proc() accountNumber
+    method getBankName = proc() <BankAccount>bankName
+end
+
+define acc1 = .<new BankAccount>init(100)
+define acc2 = .<new BankAccount>init(200)
+define acc3 = .<new BankAccount>init(300)
+
+.<acc1>getAccountNumber()
+.<acc2>getAccountNumber()
+.<acc3>getAccountNumber()
+
+% Check the static counter:
+<BankAccount>totalAccounts

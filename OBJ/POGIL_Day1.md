@@ -26,6 +26,7 @@ Group Member 4:
    - You can reference variables and objects defined in the file
 
 Example workflow:
+
 ```bash
 # Save Program A to a file
 echo "define MyClass = class
@@ -59,6 +60,7 @@ end
 define AnotherRef = MyClass
 define obj1 = new MyClass
 define obj2 = new AnotherRef
+
 ```
 
 **Critical Thinking Questions:**
@@ -90,6 +92,7 @@ define c2 = .<new Counter>init()
 .<c1>increment()
 .<c1>increment()
 .<c2>increment()
+
 ```
 
 **Critical Thinking Questions:**
@@ -138,7 +141,8 @@ end
 define p1 = new Point
 .<p1>init(3, 4)
 
-define p2 = .<new Point>init(5, 6)  % Method chaining!
+define p2 = .<new Point>init(5, 6)
+
 ```
 
 **Critical Thinking Questions:**
@@ -184,6 +188,7 @@ define answer = .<calc>getResult()
 
 % What about this?
 define directAccess = <calc>result  % Does this work?
+
 ```
 
 **Critical Thinking Questions:**
@@ -229,12 +234,13 @@ define acc1 = .<new BankAccount>init(100)
 define acc2 = .<new BankAccount>init(200)
 define acc3 = .<new BankAccount>init(300)
 
-.<acc1>getAccountNumber()  % 1
-.<acc2>getAccountNumber()  % 2
-.<acc3>getAccountNumber()  % 3
+.<acc1>getAccountNumber()
+.<acc2>getAccountNumber()
+.<acc3>getAccountNumber()
 
 % Check the static counter:
-<BankAccount>totalAccounts  % 3
+<BankAccount>totalAccounts
+
 ```
 
 **Critical Thinking Questions:**
@@ -260,8 +266,8 @@ define Vehicle = class
         this
     }
 
-    method getWheels = proc() <myclass>wheels
-    method getManufacturer = proc() <myclass>manufacturer
+    method getWheels = proc() <self>wheels
+    method getManufacturer = proc() <self>manufacturer
     method getVIN = proc() vin
 end
 
@@ -281,11 +287,12 @@ define myBike = .<new Motorcycle>init("BIKE456")
 .<myBike>getWheels()     % 2
 .<myCar>getManufacturer()  % "Generic Motors"
 .<myBike>getManufacturer() % "Speed Bikes Inc"
+
 ```
 
 **Critical Thinking Questions:**
 
-17. What does `<myclass>` refer to in the `getWheels` method?
+17. What does `<self>` refer to in the `getWheels` method?
 
 18. Why does `myCar` return 4 wheels and `myBike` return 2 wheels even though both use the same `getWheels` method?
 
@@ -293,7 +300,7 @@ define myBike = .<new Motorcycle>init("BIKE456")
 
 **Synthesis Question:**
 
-20. This is different from Java/C++ where static members are accessed via the class name. What advantage does `<myclass>` provide in inherited methods?
+20. This is different from Java/C++ where static members are accessed via the class name. What advantage does `<self>` provide in inherited methods?
 
 ---
 
@@ -342,6 +349,7 @@ define myDog = .<new Dog>init("Buddy", 3, "Golden Retriever")
 <myDog>name    % "Buddy"
 <myDog>age     % 3
 <myDog>breed   % "Golden Retriever"
+
 ```
 
 **Critical Thinking Questions:**
@@ -389,13 +397,14 @@ define obj = .<new C>init()
 .<obj>getMyX()      % 3
 .<obj>getParentX()  % 2
 % Can we get A's x? Not directly from C...
+
 ```
 
 **Critical Thinking Questions:**
 
 24. What happens when multiple classes in a hierarchy have the same field name?
 
-25. Can you access A's `x` from C's method? (This is a limitation we'll address tomorrow!)
+25. Can you access A's `x` from C's method? (This is a limitation we'll address next Class!)
 
 26. Draw the object structure showing all three `x` fields. How are they organized?
 
@@ -476,20 +485,6 @@ end
 30. What would you add to make this more realistic?
 
 ---
-
-## Reflection (5 minutes)
-
-**Individual Reflection** (write your own answers):
-
-31. What surprised you most about how OBJ handles object-oriented programming?
-
-32. What's one thing OBJ does that you wish your favorite language did?
-
-33. What's still confusing that you want to explore tomorrow?
-
-**Group Share:**
-
-34. Share one "aha!" moment your group had during this activity.
 
 ---
 

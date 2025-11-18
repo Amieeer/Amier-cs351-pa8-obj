@@ -1,0 +1,34 @@
+% Program H
+define A = class
+    field x
+    method init = proc() {
+        set x = 1;
+        this
+    }
+    method getX = proc() x
+end
+
+define B = class extends A
+    field x  % Shadow parent's x!
+    method init = proc() {
+        .<super>init();
+        set x = 2;
+        this
+    }
+end
+
+define C = class extends B
+    field x  % Shadow again!
+    method init = proc() {
+        .<super>init();
+        set x = 3;
+        this
+    }
+    method getMyX = proc() x
+    method getParentX = proc() <super>x
+end
+
+define obj = .<new C>init()
+.<obj>getMyX()      % 3
+.<obj>getParentX()  % 2
+% Can we get A's x? Not directly from C...

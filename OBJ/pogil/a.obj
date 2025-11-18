@@ -1,0 +1,8 @@
+% Program A
+define MyClass = class
+    field x
+end
+
+define AnotherRef = MyClass
+define obj1 = new MyClass
+define obj2 = new AnotherRef

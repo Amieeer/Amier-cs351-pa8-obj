@@ -1,0 +1,32 @@
+% Program D
+define Calculator = class
+    field result
+
+    method init = proc() {
+        set result = 0;
+        this
+    }
+
+    method add = proc(n) {
+        set result = +(result, n);
+        this
+    }
+
+    method multiply = proc(n) {
+        set result = *(result, n);
+        this
+    }
+
+    method getResult = proc()
+        result
+end
+
+define calc = .<new Calculator>init()
+
+% Try different ways to access result:
+.<calc>add(5)
+.<calc>multiply(3)
+define answer = .<calc>getResult()
+
+% What about this?
+define directAccess = <calc>result  % Does this work?

@@ -1,0 +1,18 @@
+% Program B
+define Counter = class
+    field count
+    method init = proc() {
+        set count = 0;
+        this
+    }
+    method increment = proc()
+        set count = add1(count)
+    method getCount = proc()
+        count
+end
+
+define c1 = .<new Counter>init()
+define c2 = .<new Counter>init()
+.<c1>increment()
+.<c1>increment()
+.<c2>increment()

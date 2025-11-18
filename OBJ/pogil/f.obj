@@ -1,0 +1,33 @@
+% Program F
+define Vehicle = class
+    static wheels = 0  % Default, to be overridden
+    static manufacturer = "Generic Motors"
+
+    field vin
+
+    method init = proc(vinNumber) {
+        set vin = vinNumber;
+        this
+    }
+
+    method getWheels = proc() <self>wheels
+    method getManufacturer = proc() <self>manufacturer
+    method getVIN = proc() vin
+end
+
+define Car = class extends Vehicle
+    static wheels = 4
+end
+
+define Motorcycle = class extends Vehicle
+    static wheels = 2
+    static manufacturer = "Speed Bikes Inc"
+end
+
+define myCar = .<new Car>init("CAR123")
+define myBike = .<new Motorcycle>init("BIKE456")
+
+.<myCar>getWheels()      % 4
+.<myBike>getWheels()     % 2
+.<myCar>getManufacturer()  % "Generic Motors"
+.<myBike>getManufacturer() % "Speed Bikes Inc"
